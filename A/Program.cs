@@ -1,47 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Runtime.ExceptionServices;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace A {
     class Program {
         static void Main( string[] args ) {
-            //var sw = new Stopwatch();
-            //var input = "100 100\r\n" + String.Join( "\r\n", Enumerable.Repeat( new string( '*', 100 ), 100 ) );
-
             var matrix = ParseMatrix( Console.In );
-            //var matrix = ParseMatrix( new StringReader( input ) );
 
-            //sw.Start();
-
-            //Console.WriteLine( "Parsing complete" );
-            //Print( matrix, Console.Out );
-
-            //Console.WriteLine( "Rotating" );
-            matrix = rotate( matrix );
-            //Print( matrix, Console.Out );
-
-            //Console.WriteLine( "Mirroring" );
+            matrix = rotate( matrix );//можно заменить эти две функции на ротейт по диагонали, но не важно
             mirror( matrix );
-            //Print( matrix, Console.Out );
 
-            //Console.WriteLine( "Scaling" );
             matrix = scale( matrix );
-            //Print( matrix, Console.Out );
-
-            //Console.WriteLine( "Result" );
-            //Print( matrix, new StreamWriter(Stream.Null) );
             Print( matrix, Console.Out );
-            //sw.Stop();
-            //Console.Error.WriteLine( sw.Elapsed );
-            //Console.ReadLine();
-            //Console.WriteLine( "Press enter to exit" );
-            //Console.ReadLine();
         }
 
         private static void Print( bool[][] matrix, TextWriter @out ) {
@@ -67,15 +37,6 @@ namespace A {
                     matrix[ i][ j ] = line[ j ] == '*';
                 }
             }
-            //var lines = si.ReadToEnd().Split( new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries );
-            //var bits = lines.Select( a => a.Select( b => b == '*' ).ToArray() ).ToArray();
-            //var matrix = new bool[sr[ 0 ]][];// sr[ 1 ]];
-            //for ( int i = 0; i < matrix.Length; i++ ) matrix[ i ] = new bool[sr[ 1 ]];
-            //for ( int i = 0; i < bits.Length; i++ ) {
-            //    var bools = bits[ i ];
-            //    var length = bools.Length;
-            //    for ( int j = 0; j < length; j++ ) matrix[ i ][ j ] = bools[ i ];
-            //}
             return matrix;
         }
 
